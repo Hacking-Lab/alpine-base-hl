@@ -34,4 +34,5 @@ services:
 
 If you do not set these env variables, the base image will create the user "hacker" with the uid 2000 and random passwords (for both, hacker and root)
 
-
+## Multi Arch Docker
+* https://github.com/docker/buildx/
