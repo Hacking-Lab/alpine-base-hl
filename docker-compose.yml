@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  alpine-base-hl:
+    build: .
+    image: hackinglab/alpine-base-hl:3.2
+    environment:
+      - HL_USER_USERNAME=hacker
+      - HL_USER_PASSWORD=compass
+      - HL_ROOT_PASSWORD=<change-me>
+
+
