@@ -10,7 +10,7 @@ RUN apk add --update --no-cache bind-tools curl libcap bash net-tools openssl pw
 	curl -sSL https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-i686.tar.xz | tar -Jxpf - -C /  && \
 	rm -rf /var/cache/apk/*
 
-COPY root /
+ADD root /
 
 ENTRYPOINT ["/init"]
 CMD []
