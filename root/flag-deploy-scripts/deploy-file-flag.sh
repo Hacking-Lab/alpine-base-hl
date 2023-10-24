@@ -3,7 +3,10 @@
 echo "put your commands to deploy the file based flag here"
 echo "the /goldnugget/*.gn contains the flag"
 
-source /goldnugget/*.gn
+GN_FILE=$(ls /goldnugget/*.gn)
+source $GN_FILE
+
+echo "extend this script and move $GOLDNUGGET to the destination you want"
 echo $GOLDNUGGET
 
 

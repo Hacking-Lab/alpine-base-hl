@@ -1,2 +1,2 @@
-this image is based on hackinglab/alpine-base-hl:3.2
-Wed Jan 23 11:06:15 AM CEST 2023
+this image defines the hackinglab/alpine-base-hl:3.2
+Tue Oct 24 10:47:08 CEST 2023
