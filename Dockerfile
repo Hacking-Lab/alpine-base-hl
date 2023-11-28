@@ -12,6 +12,7 @@ RUN case "${TARGETPLATFORM}" in \
          "linux/arm64")  S6_ARCH=s6-overlay-aarch64.tar.xz ;; \
          *) exit 1 ;; \
     esac; \
+    echo "${TARGETPLATFORM} -> ${S6_ARCH}" > /etc/hl-arch.txt && \ 
     apk add --update --no-cache bind-tools curl libcap bash net-tools openssl pwgen xz sudo && \ 
     apk upgrade --available && \
     curl -sSL https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz | tar -Jxpf - -C /  && \
