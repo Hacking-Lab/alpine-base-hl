@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.20
 MAINTAINER Ivan Buetler <ivan.buetler@compass-security.com>
 
 # Add s6-overlay
