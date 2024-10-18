@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL maintainer="Ivan Buetler <ivan.buetler@compass-security.com>"
+LABEL maintainer="Ivan Buetler <ivan.buetler@hacking-lab.com>"
 
 # Add s6-overlay
 #ENV S6_OVERLAY_VERSION=3.1.6.2
