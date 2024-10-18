@@ -3,7 +3,7 @@ LABEL maintainer="Ivan Buetler <ivan.buetler@hacking-lab.com>"
 
 # Add s6-overlay
 #ENV S6_OVERLAY_VERSION=3.1.6.2
-ENV S6_OVERLAY_VERSION=3.2.0.0
+ENV S6_OVERLAY_VERSION=3.2.0.2
 
 # Use BuildKit to help translate architecture names
 ARG TARGETPLATFORM
