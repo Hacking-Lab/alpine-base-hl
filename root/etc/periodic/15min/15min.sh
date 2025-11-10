@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "`date`: 15min.sh" >> /tmp/15min.log
+echo "`date`: /etc/periodic/15min/15min.sh" >> /tmp/15min.log
