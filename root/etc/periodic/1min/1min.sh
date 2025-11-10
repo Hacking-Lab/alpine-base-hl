@@ -1,2 +1,2 @@
 #!/bin/bash
-date >> /tmp/1min.log
+echo "`date`: 1min.sh"  >> /tmp/1min.log

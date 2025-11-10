@@ -1,6 +1,9 @@
 #!/command/with-contenv bash
 
-GN_FILE=$(ls /goldnugget/*.gn)
+if ls /goldnugget/*.gn 1>/dev/null 2>&1; then
+    GN_FILE=$(ls /goldnugget/*.gn)
+fi
+
 DEPLOY_FILE=/flag-deploy-scripts/deploy-file-flag.sh
 DEPLOY_ENV=/flag-deploy-scripts/deploy-env-flag.sh
 

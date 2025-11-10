@@ -36,7 +36,7 @@ if [ -z "$HL_USER_USERNAME" ]; then
    echo "\$HL_USER_USERNAME not set in environment variable"
    echo "will use default username hacker"
    export HL_USER_USERNAME=hacker
-   adduser -D -u 2000 $HL_USER_USERNAME
+   adduser -D -u 2000 -s /bin/bash $HL_USER_USERNAME
    echo "$HL_USER_USERNAME:$pwd1" | chpasswd
    echo "root:$pwd2" | chpasswd
 else
@@ -46,7 +46,7 @@ else
     echo "root:$pwd2" | chpasswd
   else
     echo "\$HL_USER_USERNAME is set and not root"
-    adduser -D -u 2000 $HL_USER_USERNAME
+    adduser -D -u 2000 -s /bin/bash $HL_USER_USERNAME
     echo "root:$pwd2" | chpasswd
     echo "$HL_USER_USERNAME:$pwd1" | chpasswd
   fi
