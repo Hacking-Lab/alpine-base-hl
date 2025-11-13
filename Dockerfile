@@ -22,3 +22,4 @@ RUN case "${TARGETPLATFORM}" in \
 ADD root /
 
 ENTRYPOINT ["/init"]
+

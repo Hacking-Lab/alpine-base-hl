@@ -7,5 +7,3 @@ services:
       - HL_USER_USERNAME=hacker
       - HL_USER_PASSWORD=compass
       - HL_ROOT_PASSWORD=<change-me>
-
-
