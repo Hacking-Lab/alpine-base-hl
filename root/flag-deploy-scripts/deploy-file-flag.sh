@@ -8,5 +8,3 @@ source $GN_FILE
 
 echo "extend this script and move $GOLDNUGGET to the destination you want"
 echo $GOLDNUGGET
-
-

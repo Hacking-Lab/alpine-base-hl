@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL maintainer="Ivan Buetler <ivan.buetler@hacking-lab.com>"
 
 # Add s6-overlay
-ENV S6_OVERLAY_VERSION=3.2.1.0
+ENV S6_OVERLAY_VERSION=3.2.2.0
 
 # Use BuildKit to help translate architecture names
 ARG TARGETPLATFORM

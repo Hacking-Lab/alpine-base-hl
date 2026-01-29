@@ -41,14 +41,14 @@ if [ -z "$HL_USER_USERNAME" ]; then
    echo "root:$pwd2" | chpasswd
 else
    echo "\$HL_USER_USERNAME is set in environment variable"
-  if [ "$HL_USER_USERNAME" == "root" ]; then
-    echo "HL_USER_USERNAME=root"
-    echo "root:$pwd2" | chpasswd
-  else
-    echo "\$HL_USER_USERNAME is set and not root"
-    adduser -D -u 2000 -s /bin/bash $HL_USER_USERNAME
-    echo "root:$pwd2" | chpasswd
-    echo "$HL_USER_USERNAME:$pwd1" | chpasswd
+   if [ "$HL_USER_USERNAME" == "root" ]; then
+       echo "HL_USER_USERNAME=root"
+       echo "root:$pwd2" | chpasswd
+   else
+       echo "\$HL_USER_USERNAME is set and not root"
+       adduser -D -u 2000 -s /bin/bash $HL_USER_USERNAME
+       echo "root:$pwd2" | chpasswd
+       echo "$HL_USER_USERNAME:$pwd1" | chpasswd
   fi
 fi
 
@@ -63,4 +63,7 @@ User gid:    $(id -g $HL_USER_USERNAME)
 
 echo "HL_USER_USERNAME=$HL_USER_USERNAME" > /etc/hluser
 echo "HL_USER_GROUPNAME=`id -g -n $HL_USER_USERNAME`" >> /etc/hluser
+
+echo "$HL_USER_USERNAME" > /run/s6/container_environment/S6_USER_USERNAME
+echo "`id -g -n $HL_USER_USERNAME`" >> /run/s6/container_environment/S6_USER_GROUPNAME
 
