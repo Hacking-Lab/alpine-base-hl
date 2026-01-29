@@ -1,7 +1,7 @@
 FROM alpine:latest
 LABEL maintainer="Ivan Buetler <ivan.buetler@hacking-lab.com>"
 
-# Add s6-overlay
+# Adding s6-overlay
 ENV S6_OVERLAY_VERSION=3.2.2.0
 
 # Use BuildKit to help translate architecture names
@@ -20,6 +20,9 @@ RUN case "${TARGETPLATFORM}" in \
     rm -rf /var/cache/apk/*
 
 ADD root /
+
+# Adding s6 path to PATH
+ENV PATH="/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 ENTRYPOINT ["/init"]
 
