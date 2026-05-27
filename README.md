@@ -3,7 +3,7 @@
 This is the Hacking-Lab multi-architecture CTF Alpine base image (amd64/arm64) 
 
 ## Specifications
-* with s6 startup handling (version v3.2.2.0)
+* with s6 startup handling (version v3.2.3.0)
 * with dynamic user creation
 * with or without known passwords for root and non-root user
 * with `env` based dynamic ctf flag handling
@@ -21,6 +21,7 @@ services:
       - HL_USER_USERNAME=hacker
       - HL_USER_PASSWORD=compass
       - HL_ROOT_PASSWORD=<change-me>
+      - GOLDNUGGET=FLAG{myflag}
 ```
 
 
