@@ -7,6 +7,7 @@ GN_FILES=(/goldnugget/*.gn)
 
 DEPLOY_FILE=/flag-deploy-scripts/deploy-file-flag.sh
 DEPLOY_ENV=/flag-deploy-scripts/deploy-env-flag.sh
+GOLDNUGGET_FROM_FILE=0
 
 if [ "${#GN_FILES[@]}" -gt 1 ]; then
       echo "Expected at most one /goldnugget/*.gn file, found ${#GN_FILES[@]}." >&2
@@ -23,10 +24,11 @@ if [ "${#GN_FILES[@]}" -eq 1 ]; then
             echo "Setting \$GOLDNUGGET from file"
             # shellcheck disable=SC1090
             source "$GN_FILE"
+            GOLDNUGGET_FROM_FILE=1
       fi
 
-      chown root:root /goldnugget
-      chmod 700 /goldnugget
+      chown root:root /goldnugget || echo "Warning: could not chown /goldnugget; continuing."
+      chmod 700 /goldnugget || echo "Warning: could not chmod /goldnugget; continuing."
       ls -lA /goldnugget
 
       echo "Overwrite $DEPLOY_FILE to define what to do with the flag file."
@@ -40,9 +42,11 @@ if [ "${#GN_FILES[@]}" -eq 1 ]; then
       fi
 fi
 
-if [ -z "${GOLDNUGGET:-}" ]
+if [ -z "${GOLDNUGGET:-}" ] || [ "$GOLDNUGGET_FROM_FILE" -eq 1 ]
 then
-      echo "No dynamic flag in environment variable \$GOLDNUGGET."
+      if [ "$GOLDNUGGET_FROM_FILE" -eq 0 ]; then
+            echo "No dynamic flag in environment variable \$GOLDNUGGET."
+      fi
 else
       echo "Goldnugget found in environment."
       echo "Overwrite $DEPLOY_ENV to define what to do with the flag file."
