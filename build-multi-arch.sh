@@ -1,6 +1,16 @@
 #!/bin/bash
 
-docker buildx build --platform linux/arm64,linux/amd64 -t hackinglab/alpine-base-hl:latest . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t hackinglab/alpine-base-hl:$1  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t hackinglab/alpine-base-hl:$1.0 . --push
+set -euo pipefail
 
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <version>" >&2
+    exit 1
+fi
+
+version=$1
+image=hackinglab/alpine-base-hl
+platforms=linux/arm64,linux/amd64
+
+docker buildx build --platform "$platforms" -t "$image:latest" . --push
+docker buildx build --platform "$platforms" -t "$image:$version" . --push
+docker buildx build --platform "$platforms" -t "$image:$version.0" . --push
