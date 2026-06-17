@@ -22,7 +22,7 @@ RUN set -eux; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/${S6_ARCH}" | tar -Jxpf - -C /  && \
     rm -rf /var/cache/apk/*
 
-ADD root /
+COPY root /
 
 # Adding s6 path to PATH
 ENV PATH="/command:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
