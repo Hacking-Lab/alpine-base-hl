@@ -3,12 +3,18 @@ LABEL maintainer="Ivan Buetler <ivan.buetler@compass-security.com>"
 
 # Add s6-overlay
 ENV S6_OVERLAY_VERSION=v3.2.1.0
+ENV S6_OVERLAY_NOARCH_SHA256=42e038a9a00fc0fef70bf0bc42f625a9c14f8ecdfe77d4ad93281edf717e10c5
+ENV S6_OVERLAY_I686_SHA256=0092db32e8c6013df6b8e31aa24c49cc1f9e590f632e9276443b6eba51f44888
 
 RUN set -eux; \
 	apk add --update --no-cache bind-tools curl libcap bash net-tools openssl pwgen xz && \
 	apk upgrade --available && \
-	curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" | tar -Jxpf - -C /  && \
-	curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-i686.tar.xz" | tar -Jxpf - -C /  && \
+	curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" -o /tmp/s6-overlay-noarch.tar.xz && \
+	curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-i686.tar.xz" -o /tmp/s6-overlay-i686.tar.xz && \
+	printf '%s  %s\n' "${S6_OVERLAY_NOARCH_SHA256}" /tmp/s6-overlay-noarch.tar.xz "${S6_OVERLAY_I686_SHA256}" /tmp/s6-overlay-i686.tar.xz | sha256sum -c - && \
+	tar -Jxpf /tmp/s6-overlay-noarch.tar.xz -C / && \
+	tar -Jxpf /tmp/s6-overlay-i686.tar.xz -C / && \
+	rm -f /tmp/s6-overlay-noarch.tar.xz /tmp/s6-overlay-i686.tar.xz && \
 	rm -rf /var/cache/apk/*
 
 COPY root /

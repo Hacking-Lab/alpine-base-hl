@@ -33,3 +33,13 @@ Please use the env variables listed below.
 * HL_USER_PASSWORD=compass
 * HL_ROOT_PASSWORD=change-me
 
+## Maintenance
+
+To update s6-overlay, run the updater script with the new upstream version. It downloads the release assets, recalculates SHA-256 checksums, and patches the Dockerfile.
+
+```bash
+./update-s6-overlay.sh 3.2.3.0
+./update-s6-overlay.sh --legacy 3.2.1.0
+```
+
+After updating, rebuild the image so Docker verifies the pinned checksums during the build.
