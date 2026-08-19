@@ -1,0 +1,23 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.8.3
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2026-06-22T20:37:04Z"
+  labels:
+    app: alpine-base-hl-alpine-base-hl-1-pod
+  name: alpine-base-hl
+spec:
+  containers:
+  - env:
+    - name: HL_USER_PASSWORD
+      value: compass
+    - name: HL_USER_USERNAME
+      value: hacker
+    - name: GOLDNUGGET
+      value: FLAG{hl-smoke-test}
+    image: docker.io/hackinglab/alpine-base-hl:3.2
+    name: alpine-base-hl-alpine-base-hl-1
+
